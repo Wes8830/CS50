@@ -27,7 +27,7 @@ int main(void)
     //This Function controls when the builders need to move onto the next Level of the construction as well as build the vertical shaft running through the middle
     {
         //j is vertical
-        for (j = 0; j < n; j++)
+        for (j = 1; j <= n; j++)
         {
             //build the left side of the brick building
             brick_builder_left(n);
@@ -48,12 +48,12 @@ int main(void)
     //This function is for the Left side of the building
     {
         //horizontal space
-        for (int z = n - j; z >= 0; z--)
+        for (int z = n - j; z > 0; z--)
         {
             printf(" ");
         }
         //i is horizontal
-        for(int i = j + 1; i > 0; i--)
+        for(int i = j; i > 0; i--)
         {
             //Print one brick
             printf("#");
@@ -64,7 +64,7 @@ int main(void)
     void brick_builder_right(int n)
     //This function is for the Right side of the building
     {
-            for(int i = j + 1; i > 0; i--)
+            for(int i = j; i > 0; i--)
             {
                 //Print one brick at a time
                 printf("#");
