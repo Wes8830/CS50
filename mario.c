@@ -48,10 +48,10 @@ int main(void)
     //This function is for the Left side of the building
     {
         //horizontal space
-        /*for (int z = n - j; z >= 0; z--)
+        for (int z = n - j; z >= 0; z--)
         {
             printf(" ");
-        }*/
+        }
         //i is horizontal
         for(int i = j + 1; i > 0; i--)
         {
