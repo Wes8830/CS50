@@ -24,7 +24,7 @@ long cc_nbr = get_long("What is your credit card number");
 checksum_validator(cc_nbr);
 
     //Within check_sum Validator > Let's second run the cardlength validation to see which card type this could be
-    cardlength_validator(count, cc_nbr);
+    //cardlength_validator(count, cc_nbr); is within checksum_validator
 
         //Lastly, within cardlenght validator, lets check to make sure that the first digits of the credit card number match the starting digit requirements for the given card_type
         // digit_validator is within cardlength_validator
