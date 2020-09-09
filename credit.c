@@ -41,15 +41,15 @@ void checksum_validator(long cc_nbr)
         digit = cc_nbr % 10;
         sum_first = digit + sum_first;
         cc_nbr = cc_nbr / 10;
-        printf("your current First digit is: %i\n", digit);
-        printf("your current First digit summation is: %i\n", sum_first);
+        //printf("your current First digit is: %i\n", digit);
+        //printf("your current First digit summation is: %i\n", sum_first);
         digit = cc_nbr % 10;
         sum_second = (digit * 2) + sum_second;
-        printf("your current Second digit is: %i\n", digit);
-        printf("your current Second digit summation is: %i\n", sum_second);
+        //printf("your current Second digit is: %i\n", digit);
+        //printf("your current Second digit summation is: %i\n", sum_second);
         //printf("your new number is: %li\n", cc_nbr);
         count++;
-        printf("count is: %i\n", count);
+        //printf("count is: %i\n", count);
         cc_nbr = cc_nbr / 10;
 
     }
