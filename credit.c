@@ -58,7 +58,7 @@ void checksum_validator(long cc_nbr)
     //first validation check of whether or not it's a legit number
     if (checksum == 0)
     {
-        printf("Your checksum looks good! It is: %i\n", checksum);
+        //printf("Your checksum looks good! It is: %i\n", checksum);
         cardlength_validator(count, cc_nbr);
     } else
     {
