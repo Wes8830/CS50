@@ -49,7 +49,7 @@ void checksum_validator(long cc_nbr)
         //printf("your current Second digit summation is: %i\n", sum_second);
         //printf("your new number is: %li\n", cc_nbr);
         count++;
-        printf("count is: %i\n", count);
+        //printf("count is: %i\n", count);
 
     }
     while (cc_nbr > 0);
@@ -59,16 +59,17 @@ void checksum_validator(long cc_nbr)
     if (checksum == 0)
     {
         printf("Your checksum looks good! It is: %i\n", checksum);
-        //printf("Your Card Types is: %s\n", card_type);
+        cardlength_validator(count, cc_nbr);
     } else
     {
-        //printf("%s\n", card_type);
+        string card_type = "INVALID";
+        printf("%s\n", card_type);
     }
 }
 
 void cardlength_validator(int size, long cc_nbr)
 {
-    printf("count within cardlength validator is: %i\n", count);
+    //printf("count within cardlength validator is: %i\n", count);
     if (size == 13)
     {
         string card_type = "VISA";
@@ -102,7 +103,7 @@ void digit_validator(long cc_nbr, string card_type)
     while (left_digits > 55)
     {
         left_digits = left_digits / 10;
-        printf("first digits are: %li\n", left_digits);
+        //printf("first digits are: %li\n", left_digits);
 
     }
 
@@ -120,7 +121,7 @@ void digit_validator(long cc_nbr, string card_type)
         while (left_digits > 10)
         {
         left_digits = left_digits / 10;
-        printf("first digits are: %li\n", left_digits);
+        //printf("first digit is: %li\n", left_digits);
         }
         if (left_digits == 4){
            card_type = "VISA";
