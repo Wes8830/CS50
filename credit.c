@@ -18,16 +18,16 @@ int count = 0;
 int main(void)
 {
 
-long cc_nbr_input = get_long("What is your credit card number");
+    long cc_nbr_input = get_long("What is your credit card number");
 
-//Let's first run the checksum validation to check if this could be a valid card
-checksum_validator(cc_nbr_input);
+    //Let's first run the checksum validation to check if this could be a valid card
+    checksum_validator(cc_nbr_input);
 
     //Within check_sum Validator > Let's second run the cardlength validation to see which card type this could be
     //cardlength_validator(count, cc_nbr); is within checksum_validator
 
-        //Lastly, within cardlenght validator, lets check to make sure that the first digits of the credit card number match the starting digit requirements for the given card_type
-        // digit_validator is within cardlength_validator
+    //    //Lastly, within cardlenght validator, lets check to make sure that the first digits of the credit card number match the starting digit requirements for the given card_type
+    //   // digit_validator is within cardlength_validator
 
 }
 
@@ -51,8 +51,9 @@ void checksum_validator(long cc_nbr_input)
         digit = digit_iterator % 10;
         second_multiplier = (digit * 2);
         //printf("your current Second digit is: %i\n", digit);
-        if (second_multiplier > 9){
-            sum_second = (second_multiplier/10) + (second_multiplier % 10) + sum_second;
+        if (second_multiplier > 9)
+        {
+            sum_second = (second_multiplier / 10) + (second_multiplier % 10) + sum_second;
         }
         else
         {
@@ -68,7 +69,8 @@ void checksum_validator(long cc_nbr_input)
     while (digit_iterator > 0);
 
     //Logic above will incorrectly increment count by an extra amount
-    if (count % 2 == 0){
+    if (count % 2 == 0)
+    {
         count--;
     }
 
@@ -79,7 +81,8 @@ void checksum_validator(long cc_nbr_input)
     {
         printf("Your checksum looks good! It is: %i\n", checksum);
         cardlength_validator(count, cc_nbr_input);
-    } else
+    } 
+    else
     {
         string card_type = "INVALID";
         printf("%s\n", card_type);
@@ -131,26 +134,29 @@ void digit_validator(long cc_nbr_input)
     {
         card_type = "AMEX";
         printf("%s\n", card_type);
-    } else if (left_digits == 51 || left_digits == 52 || left_digits == 53 || left_digits == 54 || left_digits == 55)
+    } 
+    else if (left_digits == 51 || left_digits == 52 || left_digits == 53 || left_digits == 54 || left_digits == 55)
     {
         card_type = "MASTERCARD";
         printf("%s\n", card_type);
-    } else
+    } 
+    else
     {
         // strip away the second remaining digit and check for visa
         while (left_digits > 10)
         {
-        left_digits = left_digits / 10;
-        //printf("first digit is: %li\n", left_digits);
+            left_digits = left_digits / 10;
+            //printf("first digit is: %li\n", left_digits);
         }
-        if (left_digits == 4){
-           card_type = "VISA";
-           printf("%s\n", card_type);
+        if (left_digits == 4)
+        {
+            card_type = "VISA";
+            printf("%s\n", card_type);
         }
         else 
         {
             card_type = "INVALID";
-            printf("%s\n",card_type);
+            printf("%s\n", card_type);
         }
 
     }
@@ -161,27 +167,27 @@ string card_type = "INVALID";
 
 /*void amex(void)
 //15 digits, start with either 34 or 37
-//	378282246310005
-// 	371449635398431
-//  378734493671000
+//378282246310005
+//371449635398431
+//378734493671000
 {
     printf("AMEX\n");
 }
 
 void mastercard(void)
 //16 digits, start with 51, 52, 53, 54, or 55
-//	2221000000000009
-// 	5555555555554444
-//  5105105105105100
+//2221000000000009
+//5555555555554444
+//5105105105105100
 {
     printf("MASTERCARD\n");
 }
 
 void visa(void)
 //13 or 16 digit, starts with 4
-//	4111111111111111
-//	4012888888881881
-//	4222222222222
+//4111111111111111
+//4012888888881881
+//4222222222222
 {
     printf("VISA\n");
 }
