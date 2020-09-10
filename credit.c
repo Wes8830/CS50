@@ -5,7 +5,7 @@
 
 void checksum_validator(long cc_nbr_input);
 void cardlength_validator(int size, long cc_nbr_input);
-void digit_validator(long cc_nbr_input, string card_type);
+void digit_validator(long cc_nbr_input);
 
 
 int sum_first = 0;
@@ -91,36 +91,39 @@ void cardlength_validator(int size, long cc_nbr_input)
     printf("count within cardlength validator is: %i\n", size);
     if (size == 13)
     {
-        string card_type = "VISA";
-        digit_validator(cc_nbr_input, card_type);
+        //string card_type = "VISA";
+        digit_validator(cc_nbr_input);
 
     }
     //let's check if its length could be AMEX
     else if (size == 15)
     {
-        string card_type  = "AMEX";
-        digit_validator(cc_nbr_input, card_type);
+        //string card_type  = "AMEX";
+        digit_validator(cc_nbr_input);
     }
     //now we have to check if it's visa or mastercard
     else if (size == 16)
     {
-        string card_type  = "VISA OR MASTERCARD";
-        digit_validator(cc_nbr_input, card_type);
+        //string card_type  = "VISA OR MASTERCARD";
+        digit_validator(cc_nbr_input);
     }
     else
     {
-        printf("INVALID\n");
+        string card_type  = "INVALID";
+        printf("%s\n", card_type);
     }
 }
 
-void digit_validator(long cc_nbr_input, string card_type)
+void digit_validator(long cc_nbr_input)
 {
+    string card_type = "N/A";
+
     long left_digits = cc_nbr_input;
     printf("Your Left digits are: %li\n", left_digits);
     while (left_digits > 55)
     {
         left_digits = left_digits / 10;
-        //printf("first digits are: %li\n", left_digits);
+        printf("left digits are: %li\n", left_digits);
 
     }
 
@@ -143,6 +146,11 @@ void digit_validator(long cc_nbr_input, string card_type)
         if (left_digits == 4){
            card_type = "VISA";
            printf("%s\n", card_type);
+        }
+        else 
+        {
+            card_type = "INVALID";
+            printf("%s\n",card_type);
         }
 
     }
