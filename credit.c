@@ -41,6 +41,7 @@ void checksum_validator(long cc_nbr_input)
 
     do
     {
+
         digit = digit_iterator % 10;
         sum_first = digit + sum_first;
         digit_iterator = digit_iterator / 10;
@@ -65,6 +66,11 @@ void checksum_validator(long cc_nbr_input)
 
     }
     while (digit_iterator > 0);
+
+    //Logic above will incorrectly increment count by an extra amount
+    if (count % 2 == 0){
+        count--;
+    }
 
     int checksum = (sum_first + sum_second) % 10;
     //first validation check of whether or not it's a legit number
@@ -111,7 +117,6 @@ void digit_validator(long cc_nbr_input, string card_type)
 {
     long left_digits = cc_nbr_input;
     printf("Your Left digits are: %li\n", left_digits);
-    //logic is broken for 15 digit cards, we're breakling off
     while (left_digits > 55)
     {
         left_digits = left_digits / 10;
