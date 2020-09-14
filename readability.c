@@ -72,7 +72,7 @@ int count_words(string text, int n)
     bool curr_char = false;
     for (int i = 0; i < n; i++)
     {
-        prev_char = is_letter(text, i-1);
+        prev_char = is_letter(text, i - 1);
         curr_char = is_letter(text, i);
 
         //checks to see if the prev char is not a letter and the current character is. if both true, then we have a word!
@@ -87,14 +87,14 @@ int count_words(string text, int n)
 bool is_letter(string text, int i)
 {
 // function to check to see if the char is considered a letter
-        if (((int) text[i] > 64 && text[i] < 126) || text[i] == 39 || text[i] == 45)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    if (((int) text[i] > 64 && text[i] < 126) || text[i] == 39 || text[i] == 45)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 int count_sentences(string text, int n)
@@ -114,14 +114,14 @@ int count_sentences(string text, int n)
 bool is_end_sentence(string text, int i)
 {
 // function to check to see if something is at the end of the sentence.
-        if ((int) text[i] == 33 || text[i] == 46 || text[i] == 63 )
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    if ((int) text[i] == 33 || text[i] == 46 || text[i] == 63)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 int grader(float letters, float words, float sentences)
