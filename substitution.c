@@ -153,10 +153,14 @@ int error_check(string key, int key_length, int arg_count)
                 }
 
                 //ok it's possible that there was a match. Let's make sure.
-                if (duplicate != 0)
+                if (duplicate == 1)
                 {
                     printf("You have a duplicate character: %c\n", key[i]);
                     exit(1);
+                }
+                else
+                {
+                    return 0;
                 }
             }
 
