@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -118,13 +119,13 @@ int error_check(string key, int key_length, int arg_count)
     {
         printf("Usage: ./substitution key\n");
         //no_error = 1;
-        return 1;
+        exit(1);
     }
     else if (key_length != 26)
     {
         printf("Key must contain 26 characters.\n");
         //no_error = 1;
-        return 1;
+        exit(1);
     }
     else //no errors found
     {
