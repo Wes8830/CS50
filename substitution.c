@@ -118,18 +118,54 @@ int error_check(string key, int key_length, int arg_count)
     if (arg_count != 2)
     {
         printf("Usage: ./substitution key\n");
-        //no_error = 1;
         exit(1);
     }
     else if (key_length != 26)
     {
         printf("Key must contain 26 characters.\n");
-        //no_error = 1;
         exit(1);
+    }
+    else if (key_length == 26)
+    {
+        for (int i = 0; i < key_length; i++)
+        {
+            int char_valid = 0;
+            if((key[i] > 64 && key[i] < 91) || (key[i] > 96 && key[i] < 123 ))
+            {
+                char_valid = 1;
+            }
+            else
+            {
+                char_valid = 0;
+                printf("Your Key is Invalid");
+                exit(1);
+            }
+
+            //Ok, the Character is Alphabetical, now we need to check to see if there is a duplicate
+            if(char_valid ==1)
+            {
+                int n = 1;
+                int duplicate = 1;
+                while(key[i] != key[n] && n < key_length)
+                {
+                    duplicate = 0;
+                    n++;
+                }
+
+                //ok it's possible that there was a match. Let's make sure.
+                if (duplicate != 0)
+                {
+                    printf("You have a duplicate character: %c\n", key[i]);
+                    exit(1);
+                }
+            }
+
+
+        }
+        return 0;
     }
     else //no errors found
     {
-        //no_error = 0;
         return 0;
     }
 }
