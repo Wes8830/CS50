@@ -146,24 +146,22 @@ int error_check(string key, int key_length, int arg_count)
             {
                 int n = 1;
                 int duplicate = 1;
+                
+                //checking all other characters in they key for duplicates.
                 while(key[i] != key[n] && n < key_length)
                 {
                     duplicate = 0;
                     n++;
                 }
 
-                //ok it's possible that there was a match. Let's make sure.
+                //ok it's possible that there was a match upon exit. Let's make sure.
                 if (duplicate == 1)
                 {
                     printf("You have a duplicate character: %c\n", key[i]);
                     exit(1);
                 }
-                else
-                {
-                    return 0;
-                }
-            }
 
+            }
 
         }
         return 0;
