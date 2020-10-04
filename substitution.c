@@ -115,7 +115,7 @@ int main(int argc, string argv[])
 int error_check(string key, int key_length, int arg_count)
 {
     //check to make sure they user provided a 26 character Key
-    if (arg_count < 2 || arg_count > 2)
+    if (arg_count != 2)
     {
         printf("Usage: ./substitution key\n");
         //no_error = 1;
