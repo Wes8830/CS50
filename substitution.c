@@ -40,6 +40,7 @@ int main(int argc, string argv[])
     else //no errors found
     {
         no_error = 0;
+        return 0;
     }
 
     if (no_error == 0) {
