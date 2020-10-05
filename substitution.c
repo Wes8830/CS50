@@ -144,11 +144,12 @@ int error_check(string key, int key_length, int arg_count)
             //Ok, the Character is Alphabetical, now we need to check to see if there is a duplicate
             if(char_valid ==1)
             {
-                int n = 1;
+                //you've already checked all the characters before it, and it cannot be a duplicate of itself.
+                int n = i + 1;
                 int duplicate = 1;
-                
+
                 //checking all other characters in they key for duplicates.
-                while(key[i] != key[n] && n < key_length)
+                while(key[i] != key[n] && n <= key_length)
                 {
                     duplicate = 0;
                     n++;
@@ -160,7 +161,6 @@ int error_check(string key, int key_length, int arg_count)
                     printf("You have a duplicate character: %c\n", key[i]);
                     exit(1);
                 }
-
             }
 
         }
