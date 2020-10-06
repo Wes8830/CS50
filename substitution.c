@@ -13,7 +13,7 @@
 // encipher the text
 // print cipher text
 
-int error_check(string key, int key_length, int arg_count);
+int error_check(string key, int key_length);
 
 int main(int argc, string argv[])
 {
@@ -31,7 +31,7 @@ int main(int argc, string argv[])
     //check for errors in their Key
     //int no_error = error_check(key, key_length, argc);
         //check to make sure they user provided a 26 character Key
-    int no_error = error_check(key, key_length, arg_count);
+    int no_error = error_check(key, key_length);
 
 
     if (no_error == 0) {
@@ -112,19 +112,16 @@ int main(int argc, string argv[])
         printf("\n");
         return 0;
     }
+
 }
 
 
 
-int error_check(string key, int key_length, int arg_count)
+int error_check(string key, int key_length)
 {
     //check to make sure they user provided a 26 character Key
-    if (arg_count != 2)
-    {
-        printf("Usage: ./substitution key\n");
-        exit(1);
-    }
-    else if (key_length != 26)
+
+    if (key_length != 26)
     {
         printf("Key must contain 26 characters.\n");
         exit(1);
