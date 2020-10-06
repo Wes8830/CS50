@@ -6,9 +6,9 @@
 
 // Get Key at command line
 // Validate the key
-    //check key length
-    // check for non-alphabetic chars
-    // check for repeated chars (case-insensitive)
+// check key length
+// check for non-alphabetic chars
+// check for repeated chars (case-insensitive)
 // get Plaintext from user
 // encipher the text
 // print cipher text
@@ -17,7 +17,7 @@ int error_check(string key, int key_length);
 
 int main(int argc, string argv[])
 {
-    if(argc !=2)
+    if (argc != 2)
     {
         exit(1);
     }
@@ -30,11 +30,12 @@ int main(int argc, string argv[])
 
     //check for errors in their Key
     //int no_error = error_check(key, key_length, argc);
-        //check to make sure they user provided a 26 character Key
+    //check to make sure they user provided a 26 character Key
     int no_error = error_check(key, key_length);
 
 
-    if (no_error == 0) {
+    if (no_error == 0)
+    {
         //Prompt the user for Plaintext
         string plaintext = get_string("plaintext: ");
 
@@ -53,39 +54,40 @@ int main(int argc, string argv[])
             int n = 0;
 
             //check upper case alphabet
-          if (plaintext[i] >= 65 && plaintext [i] <= 90)
-          {
-           plaintext_ucase = 2;
-            while (plaintext[i] != upper_alpha[n])
+            if (plaintext[i] >= 65 && plaintext [i] <= 90)
             {
-                n++;
-            }
+                plaintext_ucase = 2;
+                while (plaintext[i] != upper_alpha[n])
+                {
+                    n++;
+                }
 
-          }//check lower case alphabet
-          else if (plaintext[i] >= 97 && plaintext [i] <=122)
-          {
-            plaintext_ucase = 1;
-            while (plaintext[i] != lower_alpha[n])
+            }//check lower case alphabet
+            else if (plaintext[i] >= 97 && plaintext [i] <= 122)
             {
-                n++;
+                plaintext_ucase = 1;
+                while (plaintext[i] != lower_alpha[n])
+                {
+                    n++;
+                }
             }
-          }
-          else
-          {
-            plaintext_ucase = 0;
-          }
+            else
+            {
+                plaintext_ucase = 0;
+            }
 
             //check if PLAINTEXT index matches n index in the KEY
 
             if (plaintext_ucase == 2)
             {
-               //ok, PLAINTEXT is uppercase, but the key could be in lowercase, if it is subtract 32 from it's ASCII string value
-               if (key[n] >= 97 && key[n] <= 122)
+                //ok, PLAINTEXT is uppercase, but the key could be in lowercase, if it is subtract 32 from it's ASCII string value
+                if (key[n] >= 97 && key[n] <= 122)
                 {
                     key[n] = key[n] - 32;
                 }
                 cyphertext[i] = key[n];
-            } else if ( plaintext_ucase == 1)
+            }
+            else if (plaintext_ucase == 1)
             {
                 //Plaintext is lowercase, but the key could be in uppercase, if it is, add 32 to it's ASCII string index value
                 if (key[n] >= 65 && key[n] <= 90)
@@ -106,7 +108,7 @@ int main(int argc, string argv[])
         printf("ciphertext: ");
         for (int j = 0; j < plntxt_len; j++)
         {
-            printf("%c",cyphertext[j]);
+            printf("%c", cyphertext[j]);
 
         }
         printf("\n");
@@ -131,7 +133,7 @@ int error_check(string key, int key_length)
         for (int i = 0; i < key_length; i++)
         {
             int char_valid = 0;
-            if((key[i] > 64 && key[i] < 91) || (key[i] > 96 && key[i] < 123 ))
+            if ((key[i] > 64 && key[i] < 91) || (key[i] > 96 && key[i] < 123))
             {
                 char_valid = 1;
             }
@@ -143,14 +145,14 @@ int error_check(string key, int key_length)
             }
 
             //Ok, the Character is Alphabetical, now we need to check to see if there is a duplicate
-            if(char_valid ==1)
+            if (char_valid == 1)
             {
                 //you've already checked all the characters before it, and it cannot be a duplicate of itself.
                 int n = i + 1;
                 int duplicate = 1;
 
                 //checking all other characters in they key for duplicates.
-                while(key[i] != key[n] && n <= key_length)
+                while (key[i] != key[n] && n <= key_length)
                 {
                     duplicate = 0;
                     n++;
