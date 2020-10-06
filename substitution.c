@@ -150,7 +150,7 @@ int error_check(string key, int key_length)
                 int duplicate = 1;
 
                 //checking all other characters in they key for duplicates.
-                while(key[i] != key[n] && n < key_length)
+                while(key[i] != key[n] && n <= key_length)
                 {
                     duplicate = 0;
                     n++;
