@@ -17,6 +17,10 @@ int error_check(string key, int key_length, int arg_count);
 
 int main(int argc, string argv[])
 {
+    if(argc !=2)
+    {
+        exit(1);
+    }
 
     //specify [1] here becuase argv is a vector of arguments. It doesn't store one argument as a string, it stores multiple arguments in a list called argv!
     string key = argv[1];
