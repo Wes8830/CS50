@@ -90,13 +90,13 @@ void print_winner(void)
 {
     recursive_sort(candidate_count);
 
-    if (candidates[candidate_count-1].votes == candidates[candidate_count-2].votes)
+    if (candidates[candidate_count - 1].votes == candidates[candidate_count - 2].votes)
     {
-        string winner2 = candidates[candidate_count-2].name;
+        string winner2 = candidates[candidate_count - 2].name;
         printf("%s\n", winner2);
     }
 
-    string winner = candidates[candidate_count-1].name;
+    string winner = candidates[candidate_count - 1].name;
     printf("%s\n", winner);
     return;
 }
@@ -117,7 +117,7 @@ void recursive_sort(int n)
     {
         for (int i = 0; i < n - 1; i++)
         {
-            if (candidates[i].votes > candidates[i + 1].votes )
+            if (candidates[i].votes > candidates[i + 1].votes)
             {
                 swap_smaller_num = candidates[i + 1].votes;
                 swap_smaller_name = candidates[i + 1].name;
