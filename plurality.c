@@ -92,11 +92,11 @@ void print_winner(void)
 
     if (candidates[candidate_count-1].votes == candidates[candidate_count-2].votes)
     {
-        string winner2 = candidates[candidate_count-1].name;
+        string winner2 = candidates[candidate_count-2].name;
         printf("%s\n", winner2);
     }
 
-    string winner = candidates[candidate_count-2].name;
+    string winner = candidates[candidate_count-1].name;
     printf("%s\n", winner);
     return;
 }
