@@ -155,25 +155,27 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    for(int i = 0; i < voter_count; i ++)
+    for(int j = 0; j < candidate_count; j++)
     {
-        //declare n_rank as first preference vote.
-        int n_rank = 0;
-
-        for (int j = 0; j < candidate_count; j++)
+        for (int i = 0; i < voter_count; i++)
         {
+            //declare n_rank as first preference vote.
+            int n_rank = 0;
             //take value found in pref[i][j] and stick the column (j) into candidate[j]
-            if (preferences[i][j] == n_rank && candidates[j].eliminated == false)
+            if (preferences[i][j] == n_rank )
             {
-                candidates[j].votes ++;
-                break;
-
-                //if cand has alreay been eliminated, check the voter's next favorite.
-            }
-            else if (candidates[j].eliminated == true)
-            {
+                if (candidates[j].eliminated == false)
+                {
+                    candidates[j].votes ++;
+                    break;
+                }
+                else
+                {
                     n_rank++;
                     j = -1;
+                }
+
+                //if cand has alreay been eliminated, check the voter's next favorite.
             }
         }
     }
@@ -255,14 +257,10 @@ bool is_tie(int min)
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
                 //it's a tie!
-                return true;
-        }
-        else
-        {
-            return false;
+                return 1;
         }
     }
-    return false;
+    return 0;
 }
 
 // Eliminate the candidate (or candidates) that have a vote value that matches min value
