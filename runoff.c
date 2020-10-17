@@ -137,9 +137,9 @@ bool vote(int voter, int rank, string name)
     bool valid_vote;
     for (int j = 0; j < candidate_count; j++)
     {
-        if (rank <= candidate_count && strcmp(name, candidates[j].name) == 0)
+        if (strcmp(name, candidates[j].name) == 0)
         {
-            preferences[voter][j] = rank;
+            preferences[voter][rank] = j;
             printf("voter %i, votes for %s, ranked %i\n", voter + 1, name, rank + 1);
             return true;
 
@@ -167,6 +167,7 @@ void tabulate(void)
                 if (candidates[j].eliminated == false)
                 {
                     candidates[j].votes ++;
+                    printf("vote count for %s: %i\n",candidates[j].name, candidates[j].votes);
                     break;
                 }
                 else
