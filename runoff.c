@@ -137,7 +137,7 @@ bool vote(int voter, int rank, string name)
     bool valid_vote;
     for (int j = 0; j < candidate_count; j++)
     {
-        if (strcmp(name, candidates[j].name) == 0)
+        if (strcmp(candidates[j].name, name) == 0)
         {
             preferences[voter][rank] = j;
             printf("voter %i, votes for %s, ranked %i\n", voter + 1, name, rank + 1);
@@ -149,36 +149,36 @@ bool vote(int voter, int rank, string name)
             valid_vote = false;
         }
     }
-    return valid_vote;
+return valid_vote;
 }
 
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    for(int i = 0; i < voter_count; i++)
+    for(int voter = 0; voter < voter_count; voter++)
     {
-        for (int j = 0; j < candidate_count; j++)
-        {
-            //declare n_rank as first preference vote.
-            int n_rank = 0;
-            //take value found in pref[i][j] and stick the column (j) into candidate[j]
-            if (preferences[i][j] == n_rank )
+            int rank = 0;
+            for (int j = 0; j < candidate_count; j++)
             {
-                if (candidates[j].eliminated == false)
+                if (preferences[voter][rank] == j && candidates[j].eliminated == false)
                 {
-                    candidates[j].votes ++;
-                    printf("vote count for %s: %i\n",candidates[j].name, candidates[j].votes);
+                    candidates[j].votes = candidates[j].votes + 1;
+                    printf("%s vote total is: %i\n", candidates[j].name, candidates[j].votes);
                     break;
                 }
-                else
+                else if (preferences[voter][rank] == j && candidates[j].eliminated == true)
                 {
-                    n_rank++;
-                    j = -1;
+                    for (rank = 1; rank < candidate_count; rank++)
+                    {
+                        if (preferences[voter][rank] == j && candidates[j].eliminated == false)
+                        {
+                            candidates[j].votes = candidates[j].votes + 1;
+                            printf("%s vote total is: %i\n", candidates[j].name, candidates[j].votes);
+                            break;
+                        }
+                    }
                 }
-
-                //if cand has alreay been eliminated, check the voter's next favorite.
             }
-        }
     }
     return;
 }
