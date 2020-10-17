@@ -100,6 +100,7 @@ int main(int argc, string argv[])
         int min = find_min();
         bool tie = is_tie(min);
 
+        printf("Tie status value is %d\n", tie);
         // If tie, everyone wins
         if (tie)
         {
@@ -107,6 +108,7 @@ int main(int argc, string argv[])
             {
                 if (!candidates[i].eliminated)
                 {
+                    printf("Candidates Elimination Status: %d\n", candidates[i].eliminated);
                     printf("%s\n", candidates[i].name);
                 }
             }
@@ -138,6 +140,7 @@ bool vote(int voter, int rank, string name)
         if (rank <= candidate_count && strcmp(name, candidates[j].name) == 0)
         {
             preferences[voter][j] = rank;
+            printf("voter %i, votes for %s, ranked %i\n", voter + 1, name, rank + 1);
             return true;
 
         }
@@ -152,31 +155,25 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
     for(int i = 0; i < voter_count; i ++)
     {
-        //declear n_rank as first preference vote.
+        //declare n_rank as first preference vote.
         int n_rank = 0;
 
         for (int j = 0; j < candidate_count; j++)
         {
             //take value found in pref[i][j] and stick the column (j) into candidate[j]
-            if (preferences[i][j] == n_rank)
+            if (preferences[i][j] == n_rank && candidates[j].eliminated == false)
             {
-                if (candidates[j].eliminated == false)
-                {
-                    candidates[j].votes ++;
-                    break;
-                }
+                candidates[j].votes ++;
+                break;
 
                 //if cand has alreay been eliminated, check the voter's next favorite.
-                else if (candidates[j].eliminated == true)
-                {
-                    //cand is eliminated, update i'th voter's n_rank to their next fave.
+            }
+            else if (candidates[j].eliminated == true)
+            {
                     n_rank++;
-                    j = 0;
-
-                }
+                    j = -1;
             }
         }
     }
@@ -239,6 +236,7 @@ int find_min(void)
     {
         if (candidates[j].eliminated == false)
         {
+            printf("My Minimum Value is %i\n", candidates[j].votes);
             return candidates[j].votes;
         }
     }
@@ -251,13 +249,17 @@ bool is_tie(int min)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].eliminated == false && candidates[i].votes == candidates[candidate_count].votes)
+        if (candidates[i].eliminated == false && candidates[i].votes == candidates[candidate_count - 1].votes)
         {
             //check to see if the first non elminated candidate's votes match that of the last candidate's votes.
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
                 //it's a tie!
                 return true;
+        }
+        else
+        {
+            return false;
         }
     }
     return false;
