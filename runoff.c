@@ -266,7 +266,7 @@ void selection_sort(void)
     {
         for (int n = i + 1; n < candidate_count; n++)
         {
-            if( candidates[i].votes > candidates[n].votes)
+            if( candidates[i].votes > candidates[n].votes || (candidates[i].eliminated == false && candidates[n].eliminated == true))
             {
                 swap_small_votes = candidates[n + 1].votes;
                 swap_small_name = candidates[n +1].name;
