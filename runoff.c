@@ -216,7 +216,7 @@ int find_min(void)
     //iterate through checking the 0th first, IF eliminated = true, then check 1st
     for (int j = 0; j < candidate_count; j++)
     {
-        if (candidates[j].eliminated == false)
+        if (candidates[j].eliminated == true)
         {
             printf("My Minimum Value is %i\n", candidates[j].votes);
             return candidates[j].votes;
@@ -266,7 +266,7 @@ void selection_sort(void)
     {
         for (int n = i + 1; n < candidate_count; n++)
         {
-            if( candidates[i].votes > candidates[n].votes)
+            if( candidates[i].votes > candidates[n].votes || (candidates[i].eliminated == false && candidates[n].eliminated == true))
             {
                 swap_small_votes = candidates[n + 1].votes;
                 swap_small_name = candidates[n +1].name;
