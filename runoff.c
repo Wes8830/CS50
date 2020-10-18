@@ -216,6 +216,7 @@ int find_min(void)
     //iterate through checking the 0th first, IF eliminated = true, then check 1st
     for (int j = 0; j < candidate_count; j++)
     {
+        printf("elimination status of j: %d\n", candidates[j].eliminated);
         if (!candidates[j].eliminated)
         {
             printf("My Minimum Value is %i\n", candidates[j].votes);
@@ -229,18 +230,21 @@ int find_min(void)
 // Return true if the election is tied between all, non-eliminated candidates , false otherwise
 bool is_tie(int min)
 {
+    bool is_tied;
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].eliminated == false && candidates[i].votes == candidates[candidate_count - 1].votes)
+        if (candidates[i].eliminated == 0 && candidates[i].votes == candidates[candidate_count - 1].votes)
         {
             //check to see if the first non elminated candidate's votes match that of the last candidate's votes.
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
                 //it's a tie!
-                return true;
+                is_tied = true;
+                return is_tied;
         }
+        is_tied = false;
     }
-    return false;
+    return is_tied;
 }
 
 // Eliminate the candidate (or candidates) that have a vote value that matches min value
