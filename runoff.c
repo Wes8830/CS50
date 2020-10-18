@@ -69,7 +69,7 @@ int main(int argc, string argv[])
     {
 
         // Query for each rank
-       for (int j = 0; j < candidate_count; j++)
+        for (int j = 0; j < candidate_count; j++)
         {
             string name = get_string("Rank %i: ", j + 1);
 
@@ -150,36 +150,36 @@ bool vote(int voter, int rank, string name)
             valid_vote = false;
         }
     }
-return valid_vote;
+    return valid_vote;
 }
 
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    for(int voter = 0; voter < voter_count; voter++)
+    for (int voter = 0; voter < voter_count; voter++)
     {
-            int rank = 0;
-            for (int j = 0; j < candidate_count; j++)
+        int rank = 0;
+        for (int j = 0; j < candidate_count; j++)
+        {
+            if (preferences[voter][rank] == j && candidates[j].eliminated == false)
             {
-                if (preferences[voter][rank] == j && candidates[j].eliminated == false)
+                candidates[j].votes = candidates[j].votes + 1;
+                printf("%s vote total is: %i\n", candidates[j].name, candidates[j].votes);
+                break;
+            }
+            else if (preferences[voter][rank] == j && candidates[j].eliminated == true)
+            {
+                for (rank = 1; rank < candidate_count; rank++)
                 {
-                    candidates[j].votes = candidates[j].votes + 1;
-                    printf("%s vote total is: %i\n", candidates[j].name, candidates[j].votes);
-                    break;
-                }
-                else if (preferences[voter][rank] == j && candidates[j].eliminated == true)
-                {
-                    for (rank = 1; rank < candidate_count; rank++)
+                    if (preferences[voter][rank] == j && candidates[j].eliminated == false)
                     {
-                        if (preferences[voter][rank] == j && candidates[j].eliminated == false)
-                        {
-                            candidates[j].votes = candidates[j].votes + 1;
-                            printf("%s vote total is: %i\n", candidates[j].name, candidates[j].votes);
-                            break;
-                        }
+                        candidates[j].votes = candidates[j].votes + 1;
+                        printf("%s vote total is: %i\n", candidates[j].name, candidates[j].votes);
+                        break;
                     }
                 }
             }
+        }
     }
     return;
 }
@@ -194,9 +194,9 @@ bool print_winner(void)
     for (int i = 0; i < candidate_count; i++)
     {
         //calc i'th candidate's vote percentage, if over 50% then they're the winner.
-        vote_pct = candidates[i].votes/voter_count;
+        vote_pct = candidates[i].votes / voter_count;
 
-        if (vote_pct > .50 )
+        if (vote_pct > .50)
         {
             string winner = candidates[i].name;
             printf("%s\n", winner);
@@ -216,7 +216,7 @@ int find_min(void)
     printf("name, votes, eliminated \n");
     for (int i = 0; i < candidate_count; i++)
     {
-        printf("%s    , %i    , %d    \n",candidates[i].name, candidates[i].votes, candidates[i].eliminated);
+        printf("%s    , %i    , %d    \n", candidates[i].name, candidates[i].votes, candidates[i].eliminated);
     }
 
     //iterate through checking the 0th first, IF eliminated = true, then check 1st
@@ -238,22 +238,23 @@ bool is_tie(int min)
 {
     bool is_tied;
 
-    for(int n = 0; n < candidate_count; n++)
+    for (int n = 0; n < candidate_count; n++)
     {
-        if ((candidates[n].eliminated == false && candidates[n].votes == candidates[candidate_count-1].votes) || (candidates[n].votes == candidates[candidate_count-1].votes && candidates[candidate_count-1].votes != min))
+        if ((candidates[n].eliminated == false && candidates[n].votes == candidates[candidate_count - 1].votes)
+            || (candidates[n].votes == candidates[candidate_count - 1].votes && candidates[candidate_count - 1].votes != min))
         {
             //check to see if the first non elminated candidate's votes match that of the last candidate's votes.
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
-                //it's a tie!
+            //it's a tie!
 
-                printf("ith votes and Eliminated: %i,  %d", candidates[n].votes, candidates[n].eliminated);
-                printf("last candidate votes and Eliminated: %i,  %d", candidates[n].votes, candidates[n].eliminated);
-                is_tied = true;
-                return true;
-                break;
+            printf("ith votes and Eliminated: %i,  %d", candidates[n].votes, candidates[n].eliminated);
+            printf("last candidate votes and Eliminated: %i,  %d", candidates[n].votes, candidates[n].eliminated);
+            is_tied = true;
+            return true;
+            break;
         }
-    is_tied = false;
+        is_tied = false;
     }
     return is_tied;
 }
@@ -263,7 +264,7 @@ void eliminate(int min)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes == min )
+        if (candidates[i].votes == min)
         {
             candidates[i].eliminated = true;
         }
@@ -281,7 +282,7 @@ void selection_sort(void)
     {
         for (int n = i + 1; n < candidate_count; n++)
         {
-            if( candidates[i].votes > candidates[n].votes || (candidates[i].eliminated == false && candidates[n].eliminated == true))
+            if (candidates[i].votes > candidates[n].votes || (candidates[i].eliminated == false && candidates[n].eliminated == true))
             {
                 swap_small_votes = candidates[n + 1].votes;
                 swap_small_name = candidates[n + 1].name;
