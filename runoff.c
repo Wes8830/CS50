@@ -216,7 +216,7 @@ int find_min(void)
     //iterate through checking the 0th first, IF eliminated = true, then check 1st
     for (int j = 0; j < candidate_count; j++)
     {
-        if (candidates[j].eliminated == false)
+        if (!candidates[j].eliminated)
         {
             printf("My Minimum Value is %i\n", candidates[j].votes);
             return candidates[j].votes;
