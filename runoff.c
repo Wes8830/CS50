@@ -212,12 +212,18 @@ int find_min(void)
 {
     // Sort your array
     selection_sort();
+    printf("Sorted Array: \n");
+    printf("name, votes, eliminated \n");
+    for (int i = 0; i < candidate_count; i++)
+    {
+        printf("%s    , %i    , %d    \n",candidates[i].name, candidates[i].votes, candidates[i].eliminated);
+    }
 
     //iterate through checking the 0th first, IF eliminated = true, then check 1st
     for (int j = 0; j < candidate_count; j++)
     {
         printf("elimination status of j: %d\n", candidates[j].eliminated);
-        if (!candidates[j].eliminated)
+        if (candidates[j].eliminated == false)
         {
             printf("My Minimum Value is %i\n", candidates[j].votes);
             return candidates[j].votes;
@@ -231,20 +237,22 @@ int find_min(void)
 bool is_tie(int min)
 {
     bool is_tied;
-    for (int i = 0; i < candidate_count; i++)
+    for (int i = candidate_count - 1; i >= 1; i--)
     {
-        if (candidates[i].eliminated == false && candidates[i].votes == candidates[candidate_count].votes)
+        if (candidates[candidate_count].votes == min)
         {
             //check to see if the first non elminated candidate's votes match that of the last candidate's votes.
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
                 //it's a tie!
+
                 printf("ith votes and Eliminated: %i,  %d", candidates[i].votes, candidates[i].eliminated);
                 printf("last candidate votes and Eliminated: %i,  %d", candidates[i].votes, candidates[i].eliminated);
                 is_tied = true;
-                return is_tied;
+                return candidates[i].votes;
+                break;
         }
-        is_tied = false;
+    is_tied = false;
     }
     return is_tied;
 }
@@ -254,7 +262,7 @@ void eliminate(int min)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes == min)
+        if (candidates[i].votes == min )
         {
             candidates[i].eliminated = true;
         }
@@ -275,8 +283,8 @@ void selection_sort(void)
             if( candidates[i].votes > candidates[n].votes || (candidates[i].eliminated == false && candidates[n].eliminated == true))
             {
                 swap_small_votes = candidates[n + 1].votes;
-                swap_small_name = candidates[n +1].name;
-                swap_small_elim = candidates[n +1].eliminated;
+                swap_small_name = candidates[n + 1].name;
+                swap_small_elim = candidates[n + 1].eliminated;
 
                 candidates[n].votes = candidates[i].votes;
                 candidates[n].name = candidates[i].name;
