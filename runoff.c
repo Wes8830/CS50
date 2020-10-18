@@ -32,6 +32,7 @@ bool print_winner(void);
 int find_min(void);
 bool is_tie(int min);
 void eliminate(int min);
+void selection_sort(void);
 
 int main(int argc, string argv[])
 {
@@ -68,7 +69,7 @@ int main(int argc, string argv[])
     {
 
         // Query for each rank
-        for (int j = 0; j < candidate_count; j++)
+       for (int j = 0; j < candidate_count; j++)
         {
             string name = get_string("Rank %i: ", j + 1);
 
@@ -209,30 +210,8 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-
-    int swap_small_votes;
-    string swap_small_name;
-    bool swap_small_elim;
-
-
     // Sort your array
-    for (int i = 0; i < candidate_count - 1; i++)
-    {
-        if( candidates[i].votes > candidates[i + 1].votes)
-        {
-            swap_small_votes = candidates[i + 1].votes;
-            swap_small_name = candidates[i +1].name;
-            swap_small_elim = candidates[i +1].eliminated;
-
-            candidates[i + 1].votes = candidates[i].votes;
-            candidates[i + 1].name = candidates[i].name;
-            candidates[i + 1].eliminated = candidates[i].eliminated;
-
-            candidates[i].votes = swap_small_votes;
-            candidates[i].name = swap_small_name;
-            candidates[i].eliminated = swap_small_elim;
-        }
-    }
+    selection_sort();
 
     //iterate through checking the 0th first, IF eliminated = true, then check 1st
     for (int j = 0; j < candidate_count; j++)
@@ -275,4 +254,34 @@ void eliminate(int min)
         }
     }
     return;
+}
+
+void selection_sort(void)
+{
+    int swap_small_votes;
+    string swap_small_name;
+    bool swap_small_elim;
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        for (int n = i + 1; n < candidate_count; n++)
+        {
+            if( candidates[i].votes > candidates[n].votes)
+            {
+                swap_small_votes = candidates[n + 1].votes;
+                swap_small_name = candidates[n +1].name;
+                swap_small_elim = candidates[n +1].eliminated;
+
+                candidates[n].votes = candidates[i].votes;
+                candidates[n].name = candidates[i].name;
+                candidates[n].eliminated = candidates[i].eliminated;
+
+                candidates[i].votes = swap_small_votes;
+                candidates[i].name = swap_small_name;
+                candidates[i].eliminated = swap_small_elim;
+
+                break;
+            }
+        }
+    }
 }
