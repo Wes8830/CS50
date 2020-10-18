@@ -237,10 +237,10 @@ bool is_tie(int min)
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
                 //it's a tie!
-                return 1;
+                return true;
         }
     }
-    return 0;
+    return false;
 }
 
 // Eliminate the candidate (or candidates) that have a vote value that matches min value
