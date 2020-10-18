@@ -233,12 +233,14 @@ bool is_tie(int min)
     bool is_tied;
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].eliminated == 0 && candidates[i].votes == candidates[candidate_count - 1].votes)
+        if (candidates[i].eliminated == 0 && candidates[i].votes == candidates[candidate_count].votes)
         {
             //check to see if the first non elminated candidate's votes match that of the last candidate's votes.
             //safe to assume all candidates between those two also have the same value because it's a sorted array and we're working with the found min value.
 
                 //it's a tie!
+                printf("ith votes and Eliminated: %i,  %d", candidates[i].votes, candidates[i].eliminated);
+                printf("last candidate votes and Eliminated: %i,  %d", candidates[i].votes, candidates[i].eliminated);
                 is_tied = true;
                 return is_tied;
         }
