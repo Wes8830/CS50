@@ -93,7 +93,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     //iterat through rows
 
-    RGBTRIPLE temp[0][0];
+    RGBTRIPLE temp[1][1];
 
     for (int i = 1; i < height; i++)
     {
