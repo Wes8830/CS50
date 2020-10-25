@@ -25,13 +25,13 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             //calculate the average pixel value
-            double avg = round((image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3);
+            double avg = (image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0;
 
-            /*printf("Red is: %i\n", image[i][j].rgbtRed);
-            printf("Green is: %i\n", image[i][j].rgbtGreen);
-            printf("Blue is: %i\n", image[i][j].rgbtBlue);
+            //printf("Red is: %i\n", image[i][j].rgbtRed);
+            //printf("Green is: %i\n", image[i][j].rgbtGreen);
+            //printf("Blue is: %i\n", image[i][j].rgbtBlue);
             printf("average is: %f\n", avg);
-            *///printf("H: %i\n",height);
+            //printf("H: %i\n",height);
             //printf("W: %i\n", width);
 
             //store that pixel back into the image value
