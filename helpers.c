@@ -101,8 +101,8 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0, m = width; j < width/2 ; j++, m--)
         {
             //take value in i,j place height -- and weight -- into it
-            printf("Height j : %i\n", i);
-            printf("Width: %i %i \n", j, m);
+            //printf("Height j : %i\n", i);
+            //printf("Width: %i %i \n", j, m);
 
             temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
             image[i][m].rgbtBlue = image[i][j].rgbtBlue;
