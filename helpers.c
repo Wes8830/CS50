@@ -104,10 +104,11 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             //printf("Height j : %i\n", i);
             //printf("Width: %i %i \n", j, m);
 
+
             temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
             image[i][m].rgbtBlue = image[i][j].rgbtBlue;
             image[i][j].rgbtBlue = temp[0][0].rgbtBlue;
-
+            printf("Blue is: %i \n", image[i][j].rgbtBlue);
             temp[0][0].rgbtGreen = image[i][m].rgbtGreen;
             image[i][m].rgbtGreen = image[i][j].rgbtGreen;
             image[i][j].rgbtGreen = temp[0][0].rgbtGreen;
@@ -128,7 +129,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     //iterat through rows
 
     RGBTRIPLE temp[height][width];
-    int counter = 1;
+    double counter = 1;
     int summationBlue = 0;
     int summationGreen = 0;
     int summationRed = 0;
@@ -153,7 +154,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         //iterate through columns
         for (int j = 0; j < width; j++)
         {
-            counter = 1;
+            counter = 1.0;
             //vert
 
             //establish upper, botton, left, right bounds
