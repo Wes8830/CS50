@@ -96,7 +96,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     //RGBTRIPLE temp[1][1];
 
     RGBTRIPLE temp[height][width];
-    double mid = width / 2.0;
+    //double mid = width / 2.0;
     //printf("mid is %f  \n", mid);
 
     //make a copy of image array
@@ -127,15 +127,15 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
             //temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
             //printf("column is: %i \n", column);
+            image[i][column].rgbtRed = temp[i][j].rgbtRed;
+            image[i][column].rgbtGreen = temp[i][j].rgbtGreen;
             image[i][column].rgbtBlue = temp[i][j].rgbtBlue;
             //image[i][j].rgbtBlue = temp[0][0].rgbtBlue;
             //printf("Blue is: %i \n", image[i][j].rgbtBlue);
             //temp[0][0].rgbtGreen = image[i][m].rgbtGreen;
-            image[i][column].rgbtGreen = temp[i][j].rgbtGreen;
             //image[i][j].rgbtGreen = temp[0][0].rgbtGreen;
 
             //temp[0][0].rgbtRed = image[i][m].rgbtRed;
-            image[i][column].rgbtRed = temp[i][j].rgbtRed;
             //image[i][j].rgbtRed = temp[0][0].rgbtRed;
 
 
