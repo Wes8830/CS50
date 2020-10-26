@@ -117,7 +117,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     {
         //iterate through columns, i wonder if I can use two variables here?
 
-        for (int j = 1, column = width; j < width; j++)
+        for (int j = 0, column = width; j < width; j++)
         {
             //take value in i,j place height -- and weight -- into it
             //printf("Height j : %i\n", i);
