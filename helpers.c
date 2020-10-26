@@ -127,9 +127,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
             //temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
             //printf("column is: %i \n", column);
-            image[i][column].rgbtRed = temp[i][j].rgbtRed;
-            image[i][column].rgbtGreen = temp[i][j].rgbtGreen;
-            image[i][column].rgbtBlue = temp[i][j].rgbtBlue;
+            image[i][j].rgbtRed = temp[i][column].rgbtRed;
+            image[i][j].rgbtGreen = temp[i][column].rgbtGreen;
+            image[i][j].rgbtBlue = temp[i][column].rgbtBlue;
             //image[i][j].rgbtBlue = temp[0][0].rgbtBlue;
             //printf("Blue is: %i \n", image[i][j].rgbtBlue);
             //temp[0][0].rgbtGreen = image[i][m].rgbtGreen;
