@@ -93,29 +93,51 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     //iterat through rows
 
-    RGBTRIPLE temp[1][1];
+    //RGBTRIPLE temp[1][1];
+
+    RGBTRIPLE temp[height][width];
+    double mid = width / 2.0;
+    printf("mid is %f  \n", mid);
+
+    //make a copy of image array
+    for (int x = 0; x < height; x++)
+    {
+        //iterate through columns
+        for (int z = 0; z < width; z++)
+        {
+            //pass the image array into temp so that you don't inadvertently use an already adjusted value in your summation
+            temp[x][z].rgbtBlue = image[x][z].rgbtBlue;
+            temp[x][z].rgbtGreen = image[x][z].rgbtGreen;
+            temp[x][z].rgbtRed = image[x][z].rgbtRed;
+            //printf("my temp blue value is: %i \n", temp[x][z].rgbtBlue);
+        }
+    }
 
     for (int i = 0; i < height - 1; i++)
     {
         //iterate through columns, i wonder if I can use two variables here?
-        for (int j = 0, m = width - 1; j < width/2 ; j++, m--)
+
+        for (int j = 0, column = width; j < width - 1; j++)
         {
             //take value in i,j place height -- and weight -- into it
             //printf("Height j : %i\n", i);
             //printf("Width: %i %i \n", j, m);
 
+            column = column - 1;
 
-            temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
-            image[i][m].rgbtBlue = image[i][j].rgbtBlue;
-            image[i][j].rgbtBlue = temp[0][0].rgbtBlue;
+            //temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
+            //printf("column is: %i \n", column);
+            image[i][column].rgbtBlue = temp[i][j].rgbtBlue;
+            //image[i][j].rgbtBlue = temp[0][0].rgbtBlue;
             //printf("Blue is: %i \n", image[i][j].rgbtBlue);
-            temp[0][0].rgbtGreen = image[i][m].rgbtGreen;
-            image[i][m].rgbtGreen = image[i][j].rgbtGreen;
-            image[i][j].rgbtGreen = temp[0][0].rgbtGreen;
+            //temp[0][0].rgbtGreen = image[i][m].rgbtGreen;
+            image[i][column].rgbtGreen = temp[i][j].rgbtGreen;
+            //image[i][j].rgbtGreen = temp[0][0].rgbtGreen;
 
-            temp[0][0].rgbtRed = image[i][m].rgbtRed;
-            image[i][m].rgbtRed = image[i][j].rgbtRed;
-            image[i][j].rgbtRed = temp[0][0].rgbtRed;
+            //temp[0][0].rgbtRed = image[i][m].rgbtRed;
+            image[i][column].rgbtRed = temp[i][j].rgbtRed;
+            //image[i][j].rgbtRed = temp[0][0].rgbtRed;
+
 
         }
 
