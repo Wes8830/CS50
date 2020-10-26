@@ -105,7 +105,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         //iterate through columns
         for (int z = 0; z < width; z++)
         {
-            //pass the image array into temp so that you don't inadvertently use an already adjusted value in your summation
+            //pass the image array into temp
             temp[x][z].rgbtBlue = image[x][z].rgbtBlue;
             temp[x][z].rgbtGreen = image[x][z].rgbtGreen;
             temp[x][z].rgbtRed = image[x][z].rgbtRed;
@@ -117,7 +117,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     {
         //iterate through columns, i wonder if I can use two variables here?
 
-        for (int j = 0, column = width; j < width - 1; j++)
+        for (int j = 0, column = width; j < width; j++)
         {
             //take value in i,j place height -- and weight -- into it
             //printf("Height j : %i\n", i);
