@@ -97,7 +97,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
     RGBTRIPLE temp[height][width];
     double mid = width / 2.0;
-    printf("mid is %f  \n", mid);
+    //printf("mid is %f  \n", mid);
 
     //make a copy of image array
     for (int x = 0; x < height; x++)
