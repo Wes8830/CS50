@@ -167,11 +167,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             temp[x][z].rgbtBlue = image[x][z].rgbtBlue;
             temp[x][z].rgbtGreen = image[x][z].rgbtGreen;
             temp[x][z].rgbtRed = image[x][z].rgbtRed;
-            //printf("my temp blue value is: %i \n", temp[x][z].rgbtBlue);
+
+            printf("%i   ", temp[x][z].rgbtBlue);
         }
+        printf("\n");
     }
 
-    for (int i = 0; i < height; i++)
+    
+    
+    for (int i = 1; i < height; i++)
     {
         //iterate through columns
         for (int j = 0; j < width; j++)
