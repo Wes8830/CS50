@@ -130,7 +130,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             //printf("Width: %i %i \n", j, m);
 
             //column = column - j - 1;
-           if ((width - j - 1) > j)
+           if ((width - 1) - j > 0)
            {
                 temp[0][0].rgbtBlue = image[i][j].rgbtBlue;
                 image[i][j].rgbtBlue = image[i][width - j - 1].rgbtBlue;
