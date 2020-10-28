@@ -119,7 +119,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
     //check for odd values
 
-    for (int i = 0; i < height - 1; i++)
+    for (int i = 0; i < height; i++)
     {
         //iterate through columns, i wonder if I can use two variables here?
 
