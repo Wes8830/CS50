@@ -199,7 +199,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     for (int i = 0; i < height; i++)
     {
         //iterate through columns
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j < width - 1; j++)
         {
             counter = 1.0;
             //vert
