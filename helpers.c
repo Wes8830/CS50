@@ -184,7 +184,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     for (int x = 0; x < height; x++)
     {
         //iterate through columns
-        for (int z = 0; z < width; z++)
+        for (int z = 0; z < width - 1; z++)
         {
             //pass the image array into temp so that you don't inadvertently use an already adjusted value in your summation
             temp[x][z].rgbtBlue = image[x][z].rgbtBlue;
