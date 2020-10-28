@@ -95,14 +95,14 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
     //RGBTRIPLE temp[1][1];
 
- /*   RGBTRIPLE temp[height][width];
+    RGBTRIPLE temp[height][width];
     //double mid = width / 2.0;
     //printf("mid is %f  \n", mid);
 
     //make a copy of image array
 
 
-    for (int x = 0; x < height; x++)
+  /*  for (int x = 0; x < height; x++)
     {
         //iterate through columns
         for (int z = 0; z < width; z++)
@@ -115,7 +115,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             //printf("%i   ", temp[x][z].rgbtBlue);
         }
         //printf("\n");
-    }
+    }*/
 
 
     for (int i = 0; i < height - 1; i++)
@@ -158,9 +158,10 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
 
         }
+        printf("\n");
 
     }
-    */
+
     return;
 }
 
