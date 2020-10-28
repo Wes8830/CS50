@@ -100,7 +100,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     //printf("mid is %f  \n", mid);
 
     //make a copy of image array
-    for (int x = 0; x < height; x++)
+
+
+ /*   for (int x = 0; x < height; x++)
     {
         //iterate through columns
         for (int z = 0; z < width; z++)
@@ -110,26 +112,42 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             temp[x][z].rgbtGreen = image[x][z].rgbtGreen;
             temp[x][z].rgbtRed = image[x][z].rgbtRed;
             //printf("my temp blue value is: %i \n", temp[x][z].rgbtBlue);
+            //printf("%i   ", temp[x][z].rgbtBlue);
         }
-    }
+        //printf("\n");
+    }*/
+
 
     for (int i = 0; i < height - 1; i++)
     {
         //iterate through columns, i wonder if I can use two variables here?
 
-        for (int j = 0, column = width; j < width; j++)
+        for (int j = 0, column = width; j < width / 2; j++)
         {
             //take value in i,j place height -- and weight -- into it
             //printf("Height j : %i\n", i);
             //printf("Width: %i %i \n", j, m);
 
-            column = column - 1;
+            //column = column - j - 1;
+            temp[0][0].rgbtBlue = image[i][j].rgbtBlue;
+            image[i][j].rgbtBlue = image[i][width - j - 1].rgbtBlue;
+            image[i][width - j - 1].rgbtBlue = temp[0][0].rgbtBlue;
+            
+            temp[0][0].rgbtGreen = image[i][j].rgbtGreen;
+            image[i][j].rgbtGreen = image[i][width - j - 1].rgbtGreen;
+            image[i][width - j - 1].rgbtGreen = temp[0][0].rgbtGreen;
+            
+            temp[0][0].rgbtRed = image[i][j].rgbtRed;
+            image[i][j].rgbtRed = image[i][width - j - 1].rgbtRed;
+            image[i][width - j - 1].rgbtRed = temp[0][0].rgbtRed;
+
+
 
             //temp[0][0].rgbtBlue = image[i][m].rgbtBlue;
             //printf("column is: %i \n", column);
-            image[i][j].rgbtRed = temp[i][column].rgbtRed;
-            image[i][j].rgbtGreen = temp[i][column].rgbtGreen;
-            image[i][j].rgbtBlue = temp[i][column].rgbtBlue;
+            //image[i][j].rgbtRed = temp[i][column].rgbtRed;
+            //image[i][j].rgbtGreen = temp[i][column].rgbtGreen;
+            //image[i][j].rgbtBlue = temp[i][column].rgbtBlue;
             //image[i][j].rgbtBlue = temp[0][0].rgbtBlue;
             //printf("Blue is: %i \n", image[i][j].rgbtBlue);
             //temp[0][0].rgbtGreen = image[i][m].rgbtGreen;
@@ -168,14 +186,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             temp[x][z].rgbtGreen = image[x][z].rgbtGreen;
             temp[x][z].rgbtRed = image[x][z].rgbtRed;
 
-            printf("%i   ", temp[x][z].rgbtBlue);
         }
-        printf("\n");
     }
 
-    
-    
-    for (int i = 1; i < height; i++)
+
+
+    for (int i = 0; i < height; i++)
     {
         //iterate through columns
         for (int j = 0; j < width; j++)
