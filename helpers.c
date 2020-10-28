@@ -256,6 +256,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             image[i][j].rgbtBlue = round(summationBlue / counter);
             image[i][j].rgbtGreen = round(summationGreen / counter);
             image[i][j].rgbtRed = round(summationRed / counter);
+            
+            if (image[i][j].rgbtBlue > 255)
+                image[i][j].rgbtBlue = 255;
+            if (image[i][j].rgbtGreen > 255)
+                image[i][j].rgbtGreen = 255;
+            if (image[i][j].rgbtRed > 255)
+                image[i][j].rgbtRed = 255;
             //printf("Blue is: %i \n", image[i][j].rgbtBlue);
             //printf("Green is: %i \n", image[i][j].rgbtGreen);
             //printf("Blue is: %i \n", image[i][j].rgbtRed);
