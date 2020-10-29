@@ -255,6 +255,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     summationRed = summationRed + temp[i + n][j + m].rgbtRed;
                     counter++;
                 }
+                counter++;
 
             }
 
