@@ -201,7 +201,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         //iterate through columns
         for (int j = 0; j < width - 1; j++)
         {
-            counter = 1.0;
+            counter = 0.0;
             //vert
 
             //establish upper, botton, left, right bounds
@@ -238,7 +238,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     r = 0;
                 }
 
-                counter++;
+
                 for (int m = -l; m <= r; m++)
                 {
 
