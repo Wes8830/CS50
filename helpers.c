@@ -69,12 +69,17 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 
             //cap at 50
             if (sepiaRed > 255)
+            {
                 sepiaRed = 255;
+            }
             if (sepiaGreen > 255)
+            {
                 sepiaGreen = 255;
+            }
             if (sepiaBlue > 255)
+            {
                 sepiaBlue = 255;
-
+            }    
 
             //printf("Red is: %i\n", image[i][j].rgbtRed);
 
@@ -102,20 +107,20 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     //make a copy of image array
 
 
-  /*  for (int x = 0; x < height; x++)
-    {
-        //iterate through columns
-        for (int z = 0; z < width; z++)
-        {
+    /*  for (int x = 0; x < height; x++)
+      {
+          //iterate through columns
+          for (int z = 0; z < width; z++)
+          {
             //pass the image array into temp
             temp[x][z].rgbtBlue = image[x][z].rgbtBlue;
             temp[x][z].rgbtGreen = image[x][z].rgbtGreen;
             temp[x][z].rgbtRed = image[x][z].rgbtRed;
             //printf("my temp blue value is: %i \n", temp[x][z].rgbtBlue);
             //printf("%i   ", temp[x][z].rgbtBlue);
-        }
-        //printf("\n");
-    }*/
+          }
+          //printf("\n");
+      }*/
 
     //check for odd values
 
@@ -130,8 +135,8 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
             //printf("Width: %i %i \n", j, m);
 
             //column = column - j - 1;
-           if ((width - 1) - j > 0)
-           {
+            if ((width - 1) - j > 0)
+            {
                 temp[0][0].rgbtBlue = image[i][j].rgbtBlue;
                 image[i][j].rgbtBlue = image[i][width - j - 1].rgbtBlue;
                 image[i][width - j - 1].rgbtBlue = temp[0][0].rgbtBlue;
@@ -143,7 +148,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
                 temp[0][0].rgbtRed = image[i][j].rgbtRed;
                 image[i][j].rgbtRed = image[i][width - j - 1].rgbtRed;
                 image[i][width - j - 1].rgbtRed = temp[0][0].rgbtRed;
-           }
+            }
 
 
 
@@ -209,7 +214,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             int b = 1; //sets default bottom bound
 
 
-            if(i == 0)
+            if (i == 0)
             {
                 u = 0; //prevent againt upper ceiling overflow
                 b = 1;
@@ -258,11 +263,17 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             image[i][j].rgbtRed = round(summationRed / counter);
 
             if (image[i][j].rgbtBlue > 255)
+            {
                 image[i][j].rgbtBlue = 255;
+            }
             if (image[i][j].rgbtGreen > 255)
+            {
                 image[i][j].rgbtGreen = 255;
+            }
             if (image[i][j].rgbtRed > 255)
+            {
                 image[i][j].rgbtRed = 255;
+            }
             //printf("Blue is: %i \n", image[i][j].rgbtBlue);
             //printf("Green is: %i \n", image[i][j].rgbtGreen);
             //printf("Blue is: %i \n", image[i][j].rgbtRed);
