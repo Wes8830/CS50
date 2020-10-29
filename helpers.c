@@ -79,7 +79,7 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             if (sepiaBlue > 255)
             {
                 sepiaBlue = 255;
-            }
+            }    
 
             //printf("Red is: %i\n", image[i][j].rgbtRed);
 
@@ -201,10 +201,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
 
 
-    for (int i = 0; i < height - 1; i++)
+    for (int i = 0; i < height; i++)
     {
         //iterate through columns
-        for (int j = 0; j < width - 1; j++)
+        for (int j = 0; j < width; j++)
         {
             counter = 0.0;
             //vert
