@@ -207,15 +207,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //establish upper, botton, left, right bounds
             int u = 1; //sets default upper bound
             int b = 1; //sets default bottom bound
-            int l = 1; //sets default left bound
-            int r = 1; //sets default right bound
+
 
             if(i == 0)
             {
                 u = 0; //prevent againt upper ceiling overflow
                 b = 1;
             }
-            if (i == height)
+            if (i == height - 1)
             {
                 u = 1; //prevent against 'b' bottom floor overflow
                 b = 0;
@@ -224,15 +223,16 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             for (int n = - u; n <= b; n++)
             {
+
                 //reestablish left right bounds
-                l = 1; //sets default left bound
-                r = 1; //sets default right bound
+                int l = 1; //sets default left bound
+                int r = 1; //sets default right bound
                 if (j == 0)
                 {
                     l = 0; //prevent againt 'l' left edge overflow
                     r = 1;
                 }
-                if (j == width)
+                if (j == width - 1)
                 {
                     l = 1; //prevent against 'r' right edge overflow
                     r = 0;
@@ -242,12 +242,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 for (int m = -l; m <= r; m++)
                 {
 
-                    summationBlue = summationBlue + temp[i][j].rgbtBlue;
+                    summationBlue = summationBlue + temp[i + n][j + m].rgbtBlue;
                     //printf("Blue Sum is: %i \n", summationBlue);
                     //printf("counter is: %i \n", counter);
                     //printf("i, j are: %i, %i \n", i, j);
-                    summationGreen = summationGreen + temp[i][j].rgbtGreen;
-                    summationRed = summationRed + temp[i][j].rgbtRed;
+                    summationGreen = summationGreen + temp[i + n][j + m].rgbtGreen;
+                    summationRed = summationRed + temp[i + n][j + m].rgbtRed;
                     counter++;
                 }
 
@@ -256,7 +256,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             image[i][j].rgbtBlue = round(summationBlue / counter);
             image[i][j].rgbtGreen = round(summationGreen / counter);
             image[i][j].rgbtRed = round(summationRed / counter);
-            
+
             if (image[i][j].rgbtBlue > 255)
                 image[i][j].rgbtBlue = 255;
             if (image[i][j].rgbtGreen > 255)
