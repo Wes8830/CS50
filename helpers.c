@@ -239,7 +239,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
 
                 counter++;
-                for (int m = - l; m <= r; m++)
+                for (int m = -l; m <= r; m++)
                 {
 
                     summationBlue = summationBlue + temp[i][j].rgbtBlue;
