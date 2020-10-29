@@ -210,7 +210,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //vert
 
             //establish upper, botton, left, right bounds
-            int u = 1 + i; //sets default upper bound
+            int u = 1; //sets default upper bound
             int b = 1; //sets default bottom bound
 
 
@@ -226,11 +226,11 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             }
 
 
-            for (int n = - u; n <= b; n++)
+            for (int n = - (i * u); n <= b; n++)
             {
 
                 //reestablish left right bounds
-                int l = 1 + j; //sets default left bound
+                int l = 1; //sets default left bound
                 int r = 1; //sets default right bound
                 if (j == 0)
                 {
@@ -244,7 +244,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
 
 
-                for (int m = -l; m <= r; m++)
+                for (int m = - (j * l); m <= r; m++)
                 {
 
                     summationBlue = summationBlue + temp[i + n][j + m].rgbtBlue;
