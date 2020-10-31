@@ -44,11 +44,16 @@ int main(int argc, char *argv[])
     {
 
         //printf("you're in the while loop\n");
-        fread(data_buff, 512, 1, raw);
+        //fread(data_buff, 512, 1, raw);
         //check first 4 elements within first 512 byte chunk
         if ((data_buff[0] == 0xff) && (data_buff[1] == 0xd8) && (data_buff[2] == 0xff) && ((data_buff[3] & 0xf0) == 0xe0))
         {
-            //printf("You have a match! Time to start writing to file. Match count is: %i\n", jpeg_count);
+            //check to see if you previously had a file Open for writing, and then terminate it.
+            if (jay_peg != NULL)
+            {
+                //printf("am I closing Files? YES!!!\n");
+                fclose(jay_peg);
+            }
 
             //name your new file
             //file_namer(jpeg_count);
@@ -59,23 +64,24 @@ int main(int argc, char *argv[])
 
             //create and open the file name for writing
             jay_peg = fopen(fname ,"w");
+            jpeg_count += 1;
+            //just a safety check so that we don't inadvertently write a NULL to a file
             if (jay_peg == NULL)
             {
                 return 1;
             }
-            jpeg_count += 1;
-
-        }
-        else
-        {
-            //seg faulting because you haven't opened jay_peg yet and it's trying to write to a NULL
-            //so we have to check if it had previoulsy been opened
-            if (jay_peg != NULL)
+            else if (jay_peg != NULL)
             {
-              fwrite(data_buff, 512, 1, jay_peg);
+                fwrite(data_buff, 512, 1, jay_peg);
             }
-
         }
+        //keep writing to the jpeg if you already have found one
+        else if (jay_peg != NULL)
+        {
+          fwrite(data_buff, 512, 1, jay_peg);
+        }
+
+
     }
 
 
