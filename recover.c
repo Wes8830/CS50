@@ -18,33 +18,20 @@ int main(int argc, char *argv[])
 
     //Open memory Card
     FILE* raw = fopen(argv[1], "r");
-    //initialize an image file for writing to
+    //initialize an image file for writing to, but set it to NULL because you don't know its size.
     FILE* jay_peg = NULL;
 
-    //0xff 0xd8 0xff && 0xe0...f
-
-    int *temp_512 = malloc(sizeof(*raw));
-    int size = sizeof(*raw);
-    //after malloc - check for NULL and then abort the program
-    printf("temp pointer is %d: \n", *temp_512);
-    printf("size of file is: %i\n", size);
-    if(!temp_512)
-    {
-        return 1;
-    }
-
-    unsigned char data_buff[512];
-    //Loop through bytes of size 4, so replace 128 with an i variable, in Raw, then write them to databuff
-    //See if the byte matches 0xff, then if 0xd8, then if 0xff, AND finally see if it matches 0xe0...f
+    //0xff 0xd8 0xff && 0xe0...f are the Headers of a start of a new JPEG file
 
 
     //read 512 bytes into a buffer[]
+    unsigned char data_buff[512];
+
+    //Loop through bytes of size 4, so replace 128 with an i variable, in Raw, then write them to databuff
+    //See if the byte matches 0xff, then if 0xd8, then if 0xff, AND finally see if it matches 0xe0...f
     int jpeg_count = 0;
     while (fread(data_buff, 512, 1, raw) == 1) //use instead of for loop here as it's simpler
     {
-
-        //printf("you're in the while loop\n");
-        //fread(data_buff, 512, 1, raw);
         //check first 4 elements within first 512 byte chunk
         if ((data_buff[0] == 0xff) && (data_buff[1] == 0xd8) && (data_buff[2] == 0xff) && ((data_buff[3] & 0xf0) == 0xe0))
         {
