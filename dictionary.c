@@ -32,7 +32,8 @@ bool check(const char *word)
     // use strcasecmp() to compare two strings with different cases. e.g.: FoO == foo
     int hash_index = hash(word); //returns index value where the word is stored.
 
-    node *tmp_table = table[hash_index]; //porivde your check function a temporary node for flipping through the chains in your actual hash table
+    //provide your check function a temporary node for flipping through the chains in your actual hash table
+    node *tmp_table = table[hash_index];
     //Make a copy of the Head of the hash table at hash index
     //tmp_table can be treated as the HEAD
 
@@ -85,7 +86,7 @@ bool load(const char *dictionary)
 
     //read strings from file one at a time, and pass them into a buffer
     //allocate memory to your temp node
-    while(fscanf(dict_list,"%s", word_buffer) != EOF)
+    while (fscanf(dict_list, "%s", word_buffer) != EOF)
     {
 
         node *word_node = malloc(sizeof(node));
@@ -130,7 +131,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
-     count ++; //count is a pointer of type int, since it's an address of a place in memory, this is updated by Reference, not just a copy of count's value.
+    count ++; //count is a pointer of type int, since it's an address of a place in memory, this is updated by Reference, not just a copy of count's value.
 
     //counts how many words are in the dictionary, not the size of the data
     return count;
@@ -151,7 +152,7 @@ bool unload(void)
         node *head = table[i];
         node *free_cursor = head;
         node *tmp_cursor = head;
-        while (free_cursor !=NULL)
+        while (free_cursor != NULL)
         {
             free_cursor = free_cursor->next;
             free(tmp_cursor); //free the memory allocated at that address
