@@ -130,7 +130,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
-     count += 1; //count is a pointer of type int, since it's an address of a place in memory, this is updated by Reference, not just a copy of count's value.
+     count ++; //count is a pointer of type int, since it's an address of a place in memory, this is updated by Reference, not just a copy of count's value.
 
     //counts how many words are in the dictionary, not the size of the data
     return count;
