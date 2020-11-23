@@ -22,7 +22,7 @@ const unsigned int N = 4027; //I'm setting to 4026 + 1. The starting hash value 
 
 // Hash table
 node *table[N + 1];
-int count = 0;
+int count = -1;
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
