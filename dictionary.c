@@ -1,5 +1,6 @@
 // Implements a dictionary's functionality
 
+#include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
@@ -56,12 +57,13 @@ unsigned int hash(const char *word)
 {
     //SOURCE: Adapted from 'djb2' from http://www.cse.yorku.ca/~oz/hash.html
     int hash_val = 0;
-    int c = *word;
+    char c = *word;
 
     //advances character index in the word and then does something
+
     while (c == *word++)
     {
-        hash_val = *word * 33; //highest value will be z (122) * 33 = 4026
+        hash_val = tolower(c) * 33; //highest value will be z (122) * 33 = 4026
     }
 
     return hash_val;
